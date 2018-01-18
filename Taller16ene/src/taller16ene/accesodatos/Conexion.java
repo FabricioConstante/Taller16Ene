@@ -10,7 +10,7 @@ public class Conexion {
     public void conectar() {
         try {
             Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection("jdbc:postgresql://172.30.3.134:5433/Progra_taller","usr_progra_taller", "1234");
+            con = DriverManager.getConnection("jdbc:postgresql://172.30.3.134:5433/Taller16ene","usr_academico", "123456");
         } catch (ClassNotFoundException e) {
             System.out.println("Error al cargar el driver: "
                     + e.getMessage());
