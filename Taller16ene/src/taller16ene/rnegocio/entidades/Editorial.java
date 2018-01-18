@@ -9,7 +9,7 @@ public class Editorial {
 
     public Editorial() {
     }
-
+ 
     public Editorial(int ideditorial, String nombre, String ciudad, String telefono, String direccion) {
         this.ideditorial = ideditorial;
         this.nombre = nombre;

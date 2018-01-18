@@ -7,3 +7,4 @@ public interface IPublicacion {
      public List<Publicacion> obtener() throws Exception;
      public Publicacion obtener(int codigo) throws Exception;   
 }
+ 

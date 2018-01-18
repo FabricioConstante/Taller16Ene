@@ -7,3 +7,4 @@ public interface IEditorial {
      public List<Editorial> obtener() throws Exception;
      public Editorial obtener(int codigo) throws Exception;   
 }
+ 

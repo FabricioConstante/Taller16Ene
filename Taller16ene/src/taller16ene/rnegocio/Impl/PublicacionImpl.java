@@ -32,7 +32,7 @@ public class PublicacionImpl implements IPublicacion{
         }
         return numFilasAfectadas;
     }
-    @Override
+    @Override 
     public List<Publicacion> obtener() throws Exception{
         List<Publicacion> lista = new ArrayList<>();
         

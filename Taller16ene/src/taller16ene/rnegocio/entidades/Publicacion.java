@@ -10,7 +10,7 @@ public class Publicacion {
 
     public Publicacion() {
     }
-
+ 
     public Publicacion(int idpublicacion, Editorial editorial, String ciudad, String edicion , Date f_creacion, Date f_actualizacion) {
         this.idpublicacion = idpublicacion;
         this.editorial = editorial;

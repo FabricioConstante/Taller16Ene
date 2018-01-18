@@ -62,7 +62,7 @@ public class EditorialImpl implements IEditorial{
         }
         return lista;
     }  
-    @Override
+    @Override 
     public Editorial obtener(int codigo) throws Exception{
         Editorial editorial = null;
         String sql="SELECT * FROM editorial where ideditorial=?;";
