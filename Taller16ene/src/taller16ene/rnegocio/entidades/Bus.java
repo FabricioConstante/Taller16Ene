@@ -3,16 +3,16 @@ import java.util.Date;
 public class Bus {
     private int idbus;
     private Ciudad idciudad;    
-    //private Cooperativa idcoop;
+    private Cooperativa idcoop;
     private String horario;
 
     public Bus() { 
     }
 
-    public Bus(int idbus, Ciudad idciudad, /*Cooperativa idcoop,*/ String horario) {
+    public Bus(int idbus, Ciudad idciudad, Cooperativa idcoop, String horario) {
         this.idbus = idbus;
         this.idciudad = idciudad;
-        //this.idcoop = idcoop;
+        this.idcoop = idcoop;
         this.horario = horario;
     }
 
@@ -32,13 +32,13 @@ public class Bus {
         this.idciudad = idciudad;
     }
     
-//    public Cooperativa getIdcoop() {
-//        return idciudad;
-//    }
-//
-//    public void setIdcoop(Cooperativa idcoop) {
-//        this.idcoop = idcoop;
-//    }
+    public Cooperativa getIdcoop() {
+        return idcoop;
+    }
+
+    public void setIdcoop(Cooperativa idcoop) {
+        this.idcoop = idcoop;
+    }
 
     public String getHorario() {
         return horario;
