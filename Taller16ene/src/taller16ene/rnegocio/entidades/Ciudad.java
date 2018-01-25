@@ -4,9 +4,7 @@ public class Ciudad {
     private int idciudad;
     private String nombre;
     private String provincia;
-    private String telefono;
-    private String direccion;
-
+ 
     public Ciudad() {
     }
  
