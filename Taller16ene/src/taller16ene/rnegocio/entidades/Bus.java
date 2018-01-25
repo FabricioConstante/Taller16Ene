@@ -6,7 +6,7 @@ public class Bus {
     //private Cooperativa idcoop;
     private String horario;
 
-    public Bus() {
+    public Bus() { 
     }
 
     public Bus(int idbus, Ciudad idciudad, /*Cooperativa idcoop,*/ String horario) {
