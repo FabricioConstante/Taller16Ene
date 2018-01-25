@@ -12,7 +12,7 @@ package taller16ene.rnegocio.entidades;
 public class Vehiculo {
     
     
-    private long id_vehiculo;
+    private int Id_vehiculo;
     private String TipoV;
     private String Cap_pasajeros;
     private String Marca;
@@ -20,19 +20,19 @@ public class Vehiculo {
     public Vehiculo() {
     }
 
-    public Vehiculo(long id_vehiculo, String TipoV, String Cap_pasajeros, String Marca) {
-        this.id_vehiculo = id_vehiculo;
+    public Vehiculo(int Id_vehiculo, String TipoV, String Cap_pasajeros, String Marca) {
+        this.Id_vehiculo = Id_vehiculo;
         this.TipoV = TipoV;
         this.Cap_pasajeros = Cap_pasajeros;
         this.Marca = Marca;
     }
 
-    public long getId_vehiculo() {
-        return id_vehiculo;
+    public int getId_vehiculo() {
+        return Id_vehiculo;
     }
 
-    public void setId_vehiculo(long id_vehiculo) {
-        this.id_vehiculo = id_vehiculo;
+    public void setId_vehiculo(int Id_vehiculo) {
+        this.Id_vehiculo = Id_vehiculo;
     }
 
     public String getTipoV() {
@@ -58,9 +58,7 @@ public class Vehiculo {
     public void setMarca(String Marca) {
         this.Marca = Marca;
     }
-    
-    
-    
+
     
     
 }
