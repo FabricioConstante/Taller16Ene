@@ -6,61 +6,53 @@ import java.util.*;
 
 public class Cooperativa {
     
-    private long id_cooperativa;
-    private long id_vehiculo;
-    private String nombre;
-    private Date ciudad;
+    private long Id_Coop;
+    private long Id_Vehiculo;
+    private String Nombre;
+    private Date Ciudad;
 
     public Cooperativa() {
     }
 
-    public Cooperativa(long id_cooperativa, long id_vehiculo, String nombre, Date ciudad) {
-        this.id_cooperativa = id_cooperativa;
-        this.id_vehiculo = id_vehiculo;
-        this.nombre = nombre;
-        this.ciudad = ciudad;
+    public Cooperativa(long Id_Coop, long Id_Vehiculo, String Nombre, Date Ciudad) {
+        this.Id_Coop = Id_Coop;
+        this.Id_Vehiculo = Id_Vehiculo;
+        this.Nombre = Nombre;
+        this.Ciudad = Ciudad;
     }
 
-    public long getId_cooperativa() {
-        return id_cooperativa;
+    public long getId_Coop() {
+        return Id_Coop;
     }
 
-    public void setId_cooperativa(long id_cooperativa) {
-        this.id_cooperativa = id_cooperativa;
+    public void setId_Coop(long Id_Coop) {
+        this.Id_Coop = Id_Coop;
     }
 
-    public long getId_vehiculo() {
-        return id_vehiculo;
+    public long getId_Vehiculo() {
+        return Id_Vehiculo;
     }
 
-    public void setId_vehiculo(long id_vehiculo) {
-        this.id_vehiculo = id_vehiculo;
+    public void setId_Vehiculo(long Id_Vehiculo) {
+        this.Id_Vehiculo = Id_Vehiculo;
     }
 
     public String getNombre() {
-        return nombre;
+        return Nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
     public Date getCiudad() {
-        return ciudad;
+        return Ciudad;
     }
 
-    public void setCiudad(Date ciudad) {
-        this.ciudad = ciudad;
+    public void setCiudad(Date Ciudad) {
+        this.Ciudad = Ciudad;
     }
-
-      
-   
+    
+    
+    
 }
-
-
-
-
-
-
-
-
