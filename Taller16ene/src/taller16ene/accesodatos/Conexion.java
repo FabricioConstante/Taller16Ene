@@ -1,6 +1,7 @@
 package taller16ene.accesodatos;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -85,5 +86,13 @@ public class Conexion {
             System.out.println("Error desconocido al desconectar:"
                     + e.getMessage());
         }
+    }
+
+    public int ejecutarComando(String sqlC, ArrayList<Parametro> lisParametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ResultSet ejecutarQuery(String sqlC, ArrayList<Parametro> lisParametros) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
