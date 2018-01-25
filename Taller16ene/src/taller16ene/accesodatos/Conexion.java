@@ -2,23 +2,28 @@ package taller16ene.accesodatos;
 
 import java.sql.*;
 import java.util.List;
+import java.util.Scanner;
 
 public class Conexion {
 
+       Scanner entrada = new Scanner(System.in);
+    String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    String url = "jdbc:sqlserver://172.30.3.59:1433;databaseName=Taller16";
+    String usuario = "Joss";
+    String conraseña = "111";
     Connection con = null;
 
     public void conectar() {
-        try { 
-            Class.forName("org.postgresql.Driver");
-            con = DriverManager.getConnection("jdbc:sqlserver://172.30.3.59:1433;databaseName=Taller16");
+            try {
+            Class.forName(driver);
+            con = DriverManager.getConnection(url, usuario, conraseña);
+            System.out.println("Conexion Establecida!!!");
         } catch (ClassNotFoundException e) {
-            System.out.println("Error al cargar el driver: "
-                    + e.getMessage());
+            System.out.println("Error al cargar Driver: " + e.getMessage());
         } catch (SQLException e) {
-            System.out.println("Error de sql: " + e.getMessage());
+            System.out.println("Error de SQL: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("Error desconocido al conectar: "
-                    + e.getMessage());
+            System.out.println("Error en conexion: " + e.getMessage());
         }
     }
 
