@@ -1,20 +1,21 @@
 
 package taller16ene.rnegocio.entidades;
 
+
 import java.util.Date;
 import java.util.*;
 
 public class Cooperativa {
     
     private int Id_Coop;
-    private int Id_Vehiculo;
+    private Vehiculo Id_Vehiculo;
     private String Nombre;
     private String Ciudad;
 
     public Cooperativa() {
     }
 
-    public Cooperativa(int Id_Coop, int Id_Vehiculo, String Nombre, String Ciudad) {
+    public Cooperativa(int Id_Coop, Vehiculo Id_Vehiculo, String Nombre, String Ciudad) {
         this.Id_Coop = Id_Coop;
         this.Id_Vehiculo = Id_Vehiculo;
         this.Nombre = Nombre;
@@ -29,11 +30,11 @@ public class Cooperativa {
         this.Id_Coop = Id_Coop;
     }
 
-    public int getId_Vehiculo() {
+    public Vehiculo getId_Vehiculo() {
         return Id_Vehiculo;
     }
 
-    public void setId_Vehiculo(int Id_Vehiculo) {
+    public void setId_Vehiculo(Vehiculo Id_Vehiculo) {
         this.Id_Vehiculo = Id_Vehiculo;
     }
 
@@ -53,22 +54,7 @@ public class Cooperativa {
         this.Ciudad = Ciudad;
     }
 
-    public Object getCreado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Object getActualizado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setCreado(java.sql.Date date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setActualizado(java.sql.Date date) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     
 
 }
