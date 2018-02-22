@@ -27,16 +27,16 @@ public  class CooperativaImp  implements ICooperativa{
         lisParametros.add(new Parametro(2, cooperativa.getId_Vehiculo()));
         lisParametros.add(new Parametro(3, cooperativa.getNombre()));
         lisParametros.add(new Parametro(4, cooperativa.getCiudad()));
-        if (cooperativa.getCreado() instanceof java.util.Date) {
-            lisParametros.add(new Parametro(3, new java.sql.Date(((java.util.Date) cooperativa.getCreado()).getTime())));
-        } else {
-            lisParametros.add(new Parametro(3, cooperativa.getCreado()));
-        }
-        if (cooperativa.getCreado() instanceof java.util.Date) {
-            lisParametros.add(new Parametro(4, new java.sql.Date(((java.util.Date) cooperativa.getActualizado()).getTime())));
-        } else {
-            lisParametros.add(new Parametro(4, cooperativa.getActualizado()));
-        }
+//        if (cooperativa.getCreado() instanceof java.util.Date) {
+//            lisParametros.add(new Parametro(3, new java.sql.Date(((java.util.Date) cooperativa.getCreado()).getTime())));
+//        } else {
+//            lisParametros.add(new Parametro(3, cooperativa.getCreado()));
+//        }
+//        if (cooperativa.getCreado() instanceof java.util.Date) {
+//            lisParametros.add(new Parametro(4, new java.sql.Date(((java.util.Date) cooperativa.getActualizado()).getTime())));
+//        } else {
+//            lisParametros.add(new Parametro(4, cooperativa.getActualizado()));
+//        }
         Conexion con = null;
         try {
             con = new Conexion();
@@ -61,17 +61,17 @@ public  class CooperativaImp  implements ICooperativa{
         lisParametros.add(new Parametro(2, cooperativa.getId_Vehiculo()));
         lisParametros.add(new Parametro(3, cooperativa.getNombre()));
         lisParametros.add(new Parametro(4, cooperativa.getCiudad()));
-        if (cooperativa.getCreado() instanceof java.util.Date) {
-            lisParametros.add(new Parametro(3, new java.sql.Date(((java.util.Date) cooperativa.getCreado()).getTime())));
-        } else {
-            lisParametros.add(new Parametro(3, cooperativa.getCreado()));
-        }
-        if (cooperativa.getCreado() instanceof java.util.Date) {
-            lisParametros.add(new Parametro(4, new java.sql.Date(((java.util.Date) cooperativa.getActualizado()).getTime())));
-        } else {
-            lisParametros.add(new Parametro(4, cooperativa.getActualizado()));
-        }
-        lisParametros.add(new Parametro(5, cooperativa.getId_Coop()));
+//        if (cooperativa.getCreado() instanceof java.util.Date) {
+//            lisParametros.add(new Parametro(3, new java.sql.Date(((java.util.Date) cooperativa.getCreado()).getTime())));
+//        } else {
+//            lisParametros.add(new Parametro(3, cooperativa.getCreado()));
+//        }
+//        if (cooperativa.getCreado() instanceof java.util.Date) {
+//            lisParametros.add(new Parametro(4, new java.sql.Date(((java.util.Date) cooperativa.getActualizado()).getTime())));
+//        } else {
+//            lisParametros.add(new Parametro(4, cooperativa.getActualizado()));
+//        }
+//        lisParametros.add(new Parametro(5, cooperativa.getId_Coop()));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -112,7 +112,7 @@ public  class CooperativaImp  implements ICooperativa{
     @Override
     public Cooperativa  obtener(int Id_Coop) throws Exception {
         Cooperativa  coop = null;
-        String sqlC = "SELECT id, nombre, creado, actualizado FROM Etiqueta Where id=?";
+        String sqlC = "SELECT Id_Coop, Nombre, creado, actualizado FROM Etiqueta Where id=?";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, Id_Coop));
         Conexion con = null;
@@ -124,8 +124,8 @@ public  class CooperativaImp  implements ICooperativa{
                 coop = new Cooperativa ();
                 coop.setId_Coop(rst.getInt(1));
                 coop.setNombre(rst.getString(2));
-                coop.setCreado(rst.getDate(3));
-                coop.setActualizado(rst.getDate(4));
+//                coop.setCreado(rst.getDate(3));
+//                coop.setActualizado(rst.getDate(4));
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
@@ -142,7 +142,7 @@ public  class CooperativaImp  implements ICooperativa{
         
         ArrayList<Cooperativa> listEtiqueta = new ArrayList<>();
         Cooperativa coop = null;
-        String sqlC = "Select id, nombre, creado, actualizado from Etiqueta";
+        String sqlC = "Select IVehiculo, Marca, TipoV,  actualizado from Etiqueta";
         Conexion con = null;
         try {
             con = new Conexion();
@@ -166,19 +166,6 @@ public  class CooperativaImp  implements ICooperativa{
         return listEtiqueta;
     }
 
-    @Override
-    public int insertar(CooperativaImp cooperativa) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int modificar(CooperativaImp cooperativa) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int eliminar(CooperativaImp cooperativa) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 }
-}
+
