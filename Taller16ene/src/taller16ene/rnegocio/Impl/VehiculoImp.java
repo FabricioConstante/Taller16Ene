@@ -21,20 +21,13 @@ public abstract class VehiculoImp implements IVehiculo{
      @Override
     public int insertar(Vehiculo vehiculo) throws Exception {
         int numFilas = 0;
-        String sqlC = "INSERT INTO Etiqueta (id, nombre, creado, actualizado) VALUES (?,?,?,?)";
+        String sqlC = "INSERT INTO Vehiculo (Id_Vehiculo, Marca, TipoV)"
+                + " VALUES (?,?,?)";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
-        lisParametros.add(new Parametro(1, vehiculo.getId()));
-        lisParametros.add(new Parametro(2, vehiculo.getNombre()));
-       if (vehiculo.getCreado() instanceof java.util.Date) {
-            lisParametros.add(new Parametro(3, new java.sql.Date(((java.util.Date) vehiculo.getCreado()).getTime())));
-        } else {
-            lisParametros.add(new Parametro(3, vehiculo.getCreado()));
-        }
-        if (vehiculo.getCreado() instanceof java.util.Date) {
-            lisParametros.add(new Parametro(4, new java.sql.Date(((java.util.Date) vehiculo.getActualizado()).getTime())));
-        } else {
-            lisParametros.add(new Parametro(4, vehiculo.getActualizado()));
-        }
+        lisParametros.add(new Parametro(1, vehiculo.getId_vehiculo()));
+        lisParametros.add(new Parametro(2, vehiculo.getMarca()));
+        lisParametros.add(new Parametro(3, vehiculo.getTipoV()));
+       
         Conexion con = null;
         try {
             con = new Conexion();
@@ -53,21 +46,12 @@ public abstract class VehiculoImp implements IVehiculo{
     @Override
     public int modificar(Vehiculo vehiculo) throws Exception {
         int numFilas = 0;
-        String sqlC = "UPDATE Etiqueta SET id=?, nombre=?, creado=? actualizado=? WHERE id=?";
+        String sqlC = "UPDATE Etiqueta SET idVehiculo=?, Marca=?, TipoV=?  WHERE IdVehiculo=?";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
-        lisParametros.add(new Parametro(1, vehiculo.getId()));
-        lisParametros.add(new Parametro(2, vehiculo.getNombre()));
-        if (vehiculo.getCreado() instanceof java.util.Date) {
-            lisParametros.add(new Parametro(3, new java.sql.Date(((java.util.Date) vehiculo.getCreado()).getTime())));
-        } else {
-            lisParametros.add(new Parametro(3, vehiculo.getCreado()));
-        }
-        if (vehiculo.getCreado() instanceof java.util.Date) {
-            lisParametros.add(new Parametro(4, new java.sql.Date(((java.util.Date) vehiculo.getActualizado()).getTime())));
-        } else {
-            lisParametros.add(new Parametro(4, vehiculo.getActualizado()));
-        }
-        lisParametros.add(new Parametro(5, vehiculo.getId()));
+        lisParametros.add(new Parametro(1, vehiculo.getId_vehiculo()));
+        lisParametros.add(new Parametro(2, vehiculo.getMarca()));
+        lisParametros.add(new Parametro(3, vehiculo.getTipoV()));
+       
         Conexion con = null;
         try {
             con = new Conexion();
@@ -86,9 +70,11 @@ public abstract class VehiculoImp implements IVehiculo{
     @Override
     public int eliminar(Vehiculo vehiculo) throws Exception {
         int numFilas = 0;
-        String sqlC = "DELETE FROM Etiqueta WHERE id=?";
+        String sqlC = "DELETE FROM Vehiculo WHERE IdVehiculo=?";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
-        lisParametros.add(new Parametro(1, vehiculo.getId()));
+        lisParametros.add(new Parametro(1, vehiculo.getId_vehiculo()));
+        lisParametros.add(new Parametro(2, vehiculo.getMarca()));
+        lisParametros.add(new Parametro(3, vehiculo.getTipoV()));
         Conexion con = null;
         try {
             con = new Conexion();
@@ -105,22 +91,22 @@ public abstract class VehiculoImp implements IVehiculo{
     }
 
     @Override
-    public Vehiculo obtener(long id) throws Exception {
-        Vehiculo elvehiculo = null;
-        String sqlC = "SELECT id, nombre, creado, actualizado FROM Etiqueta Where id=?";
+    public Vehiculo obtener(int IdVehiculo) throws Exception {
+        Vehiculo vehiculo = null;
+        String sqlC = "SELECT IdVehiculo, Marca, TipoV  FROM Etiqueta Where IdVehiculo=?";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
-        lisParametros.add(new Parametro(1, id));
+        lisParametros.add(new Parametro(1, IdVehiculo));
         Conexion con = null;
         try {
             con = new Conexion();
             con.conectar();
             ResultSet rst = con.ejecutarQuery(sqlC, lisParametros);
             while (rst.next()) {
-                elvehiculo = new Vehiculo();
-                elvehiculo.setId(rst.getInt(1));
-                elvehiculo.setNombre(rst.getString(2));
-                elvehiculo.setCreado(rst.getDate(3));
-                elvehiculo.setActualizado(rst.getDate(4));
+                vehiculo = new Vehiculo();
+                vehiculo.setId_vehiculo(rst.getInt(1));
+                vehiculo.setMarca(rst.getString(2));
+               vehiculo.setTipoV(rst.getString(3));
+                
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
@@ -129,14 +115,14 @@ public abstract class VehiculoImp implements IVehiculo{
                 con.desconectar();
             }
         }
-        return elvehiculo;
+        return vehiculo;
     }
 
     @Override
     public ArrayList<Vehiculo> obtener() throws Exception {
         ArrayList<Vehiculo> listEtiqueta = new ArrayList<>();
         Vehiculo nVehiculo = null;
-        String sqlC = "Select id, nombre, creado, actualizado from Etiqueta";
+        String sqlC = "Select IdVehiculo, Marca, TipoV  FROM Vehiculo=";
         Conexion con = null;
         try {
             con = new Conexion();
@@ -144,11 +130,9 @@ public abstract class VehiculoImp implements IVehiculo{
             ResultSet rst = con.ejecutarQuery(sqlC, null);
             while (rst.next()) {
                 nVehiculo= new Vehiculo();
-                nVehiculo.setId(rst.getInt(1));
-                nVehiculo.setNombre(rst.getString(2));
-                nVehiculo.setCreado(rst.getDate(3));
-                nVehiculo.setActualizado(rst.getDate(4));
-                listEtiqueta.add(nVehiculo);
+                nVehiculo.setId_vehiculo(rst.getInt(1));
+                nVehiculo.setMarca(rst.getString(2));
+               nVehiculo.setTipoV(rst.getString(3));
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
