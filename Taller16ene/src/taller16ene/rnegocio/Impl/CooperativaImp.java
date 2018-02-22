@@ -21,10 +21,10 @@ public  class CooperativaImp  implements ICooperativa{
         @Override
     public int insertar(Cooperativa cooperativa) throws Exception {
         int numFilas = 0;
-        String sqlC = "INSERT INTO Etiqueta (id, nombre, creado, actualizado) VALUES (?,?,?,?)";
+        String sqlC = "INSERT INTO Cooperativa  (Id_Coop, Id_Vehiculo, Nombre, Ciudad) VALUES (?,?,?,?)";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, cooperativa.getId_Coop()));
-        lisParametros.add(new Parametro(2, cooperativa.getId_Vehiculo()));
+        lisParametros.add(new Parametro(2, cooperativa.getId_Vehiculo().getId_vehiculo()));
         lisParametros.add(new Parametro(3, cooperativa.getNombre()));
         lisParametros.add(new Parametro(4, cooperativa.getCiudad()));
 //        if (cooperativa.getCreado() instanceof java.util.Date) {
@@ -55,10 +55,10 @@ public  class CooperativaImp  implements ICooperativa{
     @Override
     public int modificar(Cooperativa cooperativa) throws Exception {
         int numFilas = 0;
-        String sqlC = "UPDATE Etiqueta SET id=?, nombre=?, creado=? actualizado=? WHERE id=?";
+        String sqlC = "UPDATE Cooperativa SET Id_Cooperativa=?, Id_Vehiculo=?, Nombreo=? ,Ciudad=? WHERE Id_Vehiculo=?";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, cooperativa.getId_Coop()));
-        lisParametros.add(new Parametro(2, cooperativa.getId_Vehiculo()));
+        lisParametros.add(new Parametro(2, cooperativa.getId_Vehiculo().getId_vehiculo()));
         lisParametros.add(new Parametro(3, cooperativa.getNombre()));
         lisParametros.add(new Parametro(4, cooperativa.getCiudad()));
 //        if (cooperativa.getCreado() instanceof java.util.Date) {
@@ -90,10 +90,13 @@ public  class CooperativaImp  implements ICooperativa{
     @Override
     public int eliminar(Cooperativa cooperativa) throws Exception {
         int numFilas = 0;
-        String sqlC = "DELETE FROM Etiqueta WHERE id=?";
+        String sqlC = "DELETE FROM Cooperativa WHERE Id_Cooperativa=?";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, cooperativa.getId_Coop()));
-        lisParametros.add(new Parametro(1, cooperativa.getId_Vehiculo()));
+        lisParametros.add(new Parametro(1, cooperativa.getId_Vehiculo().getId_vehiculo()));
+        lisParametros.add(new Parametro(3, cooperativa.getNombre()));
+        lisParametros.add(new Parametro(4, cooperativa.getCiudad()));
+        
         Conexion con = null;
         try {
             con = new Conexion();
@@ -110,9 +113,9 @@ public  class CooperativaImp  implements ICooperativa{
     }
 
     @Override
-    public Cooperativa  obtener(int Id_Coop) throws Exception {
+    public Cooperativa  obtener(int Id_Coop ) throws Exception {
         Cooperativa  coop = null;
-        String sqlC = "SELECT Id_Coop, Nombre, creado, actualizado FROM Etiqueta Where id=?";
+        String sqlC = "SELECT Id_Coop FROM Cooperativa Where Id_Cooperativa=?";
         ArrayList<Parametro> lisParametros = new ArrayList<>();
         lisParametros.add(new Parametro(1, Id_Coop));
         Conexion con = null;
@@ -123,7 +126,9 @@ public  class CooperativaImp  implements ICooperativa{
             while (rst.next()) {
                 coop = new Cooperativa ();
                 coop.setId_Coop(rst.getInt(1));
-                coop.setNombre(rst.getString(2));
+                ICooperativa cooperativaDao= new CooperativaImp();
+                Cooperativa cooperativa =cooperativaDao.obtener(rst.getInt(2));
+                coop.setNombre(rst.getString(3));
 //                coop.setCreado(rst.getDate(3));
 //                coop.setActualizado(rst.getDate(4));
             }
@@ -142,7 +147,7 @@ public  class CooperativaImp  implements ICooperativa{
         
         ArrayList<Cooperativa> listEtiqueta = new ArrayList<>();
         Cooperativa coop = null;
-        String sqlC = "Select IVehiculo, Marca, TipoV,  actualizado from Etiqueta";
+        String sqlC = "Select ICooperativa, Id_Vehiculo, Nombre,Ciudad  actualizado from Cooperativa";
         Conexion con = null;
         try {
             con = new Conexion();
@@ -151,9 +156,11 @@ public  class CooperativaImp  implements ICooperativa{
             while (rst.next()) {
                 coop= new Cooperativa();
                 coop.setId_Coop(rst.getInt(1));
-                coop.setNombre(rst.getString(2));
-                coop.setCreado(rst.getDate(3));
-                coop.setActualizado(rst.getDate(4));
+                
+                ICooperativa cooperativaDao= new CooperativaImp();
+                Cooperativa cooperativa =cooperativaDao.obtener(rst.getInt(2));
+                coop.setNombre(rst.getString(3));
+//                coop.setActualizado(rst.getDate(4));
                 
             }
         } catch (Exception e) {
