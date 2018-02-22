@@ -59,6 +59,14 @@ public class Vehiculo {
         this.Marca = Marca;
     }
 
+    public Object getCreado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getActualizado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     
 }
